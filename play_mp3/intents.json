@@ -1,0 +1,126 @@
+{
+  "languageModel": {
+    "types": [
+      {
+        "name": "TrackNames",
+        "values": [
+          {
+            "id": null,
+            "name": {
+              "value": "[INSERT:track_name]",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "[INSERT:track_name]",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "[INSERT:track_name]",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "[INSERT:track_name]",
+              "synonyms": []
+            }
+          }
+        ]
+      }
+    ],
+    "intents": [
+      {
+        "name": "AMAZON.CancelIntent",
+        "samples": []
+      },
+      {
+        "name": "AMAZON.HelpIntent",
+        "samples": []
+      },
+      {
+        "name": "AMAZON.PauseIntent",
+        "samples": []
+      },
+      {
+        "name": "AMAZON.ResumeIntent",
+        "samples": []
+      },
+      {
+        "name": "AMAZON.StopIntent",
+        "samples": []
+      },
+      {
+        "name": "ListTracksIntent",
+        "samples": [
+          "what tracks are available",
+          "all tracks",
+          "what can you play",
+          "what tracks can you play",
+          "tell me the tracks",
+          "tell me the tracks please",
+          "which tracks can you play",
+          "list the available tracks",
+          "list the tracks"
+        ],
+        "slots": []
+      },
+      {
+        "name": "PlayTrackIntent",
+        "samples": [
+          "play",
+          "play {TrackName}"
+        ],
+        "slots": [
+          {
+            "name": "TrackName",
+            "type": "TrackNames",
+            "samples": [
+              "the {TrackName} track",
+              "{TrackName}",
+              "{TrackName} track"
+            ]
+          }
+        ]
+      }
+    ],
+    "invocationName": "[INSERT:invocation_name]"
+  },
+  "prompts": [
+    {
+      "id": "Elicit.Intent-PlayTrackIntent.IntentSlot-TrackName",
+      "variations": [
+        {
+          "type": "PlainText",
+          "value": "Which track do you want me to play?"
+        }
+      ]
+    }
+  ],
+  "dialog": {
+    "intents": [
+      {
+        "name": "PlayTrackIntent",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": [
+          {
+            "name": "TrackName",
+            "type": "TrackNames",
+            "elicitationRequired": true,
+            "confirmationRequired": false,
+            "prompts": {
+              "elicitation": "Elicit.Intent-PlayTrackIntent.IntentSlot-TrackName"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
